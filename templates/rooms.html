@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Rooms</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/room.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>💬 Available Chat Rooms</h1>
+
+        {% if rooms %}
+
+            {% for room in rooms %}
+
+            <div class="room-box">
+
+                <h2>{{ room.room_name }}</h2>
+
+                <p><strong>Room ID:</strong> {{ room.room_id }}</p>
+
+                <a href="/join-room/{{ room.id }}" class="join-btn">
+    Join Room
+</a>
+
+<a href="/delete-room/{{ room.id }}" class="delete-btn">
+    Delete
+</a>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <h3>No Rooms Available</h3>
+
+        {% endif %}
+
+        <br>
+
+        <a href="/dashboard" class="back-btn">
+    ⬅ Back
+</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

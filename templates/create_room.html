@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Chat Room</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/create_room.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>🏠 Create Chat Room</h1>
+
+        <form action="/save-room" method="POST">
+
+            <input
+                type="text"
+                name="room_id"
+                placeholder="Room ID"
+                required>
+
+            <input
+                type="text"
+                name="room_name"
+                placeholder="Room Name"
+                required>
+
+            <input
+                type="password"
+                name="room_password"
+                placeholder="Room Password"
+                required>
+
+            <button type="submit">
+                Create Room
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="/dashboard">
+            ⬅ Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

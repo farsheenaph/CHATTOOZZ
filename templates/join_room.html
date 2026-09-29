@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Join Room</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/join_room.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Join {{ room.room_name }}</h1>
+
+<form action="/verify-room/{{ room.id }}" method="POST">
+
+<input
+type="text"
+name="username"
+placeholder="Your Name"
+required>
+
+<input
+type="password"
+name="room_password"
+placeholder="Room Password"
+required>
+
+<button type="submit">
+
+Join Chat
+
+</button>
+
+</form>
+
+<a href="/rooms">
+
+⬅ Back
+
+</a>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

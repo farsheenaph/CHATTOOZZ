@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>Admin Dashboard</h1>
+
+        <a href="/create-room" class="btn user">
+            Create Room
+        </a>
+
+        <a href="/rooms" class="btn admin">
+            View Rooms
+        </a>
+        <br>
+
+        <a href="/dashboard" class="back-btn">
+    ⬅ Back
+</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

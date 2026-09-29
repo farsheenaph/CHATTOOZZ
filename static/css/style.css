@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+
+    background:linear-gradient(135deg,#1b2550 0%,#2c2f88 55%,#3f6fff 100%);
+}
+
+.background-circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+}
+
+.one{
+    width:350px;
+    height:350px;
+    background:#00d4ff;
+    top:-100px;
+    left:-120px;
+    opacity:.20;
+}
+
+.two{
+    width:420px;
+    height:420px;
+    background:#5f4bff;
+    bottom:-150px;
+    right:-100px;
+    opacity:.35;
+}
+
+.container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+
+    width:630px;
+
+    padding:60px 55px;
+
+    background:rgba(255,255,255,.13);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:28px;
+
+    backdrop-filter:blur(18px);
+
+    text-align:center;
+
+    box-shadow:0 25px 50px rgba(0,0,0,.35);
+}
+
+.logo{
+
+    width:90px;
+
+    height:90px;
+
+    margin:auto;
+
+    margin-bottom:25px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:48px;
+
+    color:#39b8ff;
+}
+
+h1{
+
+    color:white;
+
+    font-size:60px;
+
+    font-weight:800;
+
+    margin-bottom:15px;
+}
+
+p{
+
+    color:#dcdcff;
+
+    font-size:26px;
+
+    margin-bottom:40px;
+}
+
+.btn{
+
+    width:100%;
+
+    display:block;
+
+    padding:18px;
+
+    margin:18px 0;
+
+    border-radius:15px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    transition:.3s;
+}
+
+.admin{
+
+    background:linear-gradient(90deg,#5b4dff,#4b44db);
+}
+
+.user{
+
+    background:linear-gradient(90deg,#17c3df,#19b8d5);
+}
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+}
+
+.features{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:40px;
+}
+
+.feature{
+
+    background:rgba(255,255,255,.13);
+
+    padding:14px 22px;
+
+    border-radius:35px;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    min-width:150px;
+}
+
+.feature:hover{
+
+    background:rgba(255,255,255,.22);
+}

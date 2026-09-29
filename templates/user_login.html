@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - CHATTOOZZ</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <div class="login-box">
+
+        <h1>💬 CHATTOOZZ</h1>
+        <h2>User Login</h2>
+
+        <form action="/join-room" method="GET">
+
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter Your Name"
+                required>
+
+            <input
+                type="text"
+                name="room"
+                placeholder="Enter Room ID"
+                required>
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Enter Room Password"
+                required>
+
+            <button type="submit">
+                Join Room
+            </button>
+
+        </form>
+
+        <br>
+
+        <a href="/">⬅ Back to Home</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

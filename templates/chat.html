@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chattoozzz</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/chat.css') }}">
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <h1>💬 Chattoozzz</h1>
+
+    <div id="messages"></div>
+
+    <div class="input-box">
+
+        <input
+            type="text"
+            id="message"
+            placeholder="Type your message...">
+
+        <button onclick="sendMessage()">
+            Send
+        </button>
+
+    </div>
+
+</div>
+
+<!-- JavaScript starts here -->
+<script>
+const socket = io();
+
+socket.on("connect", function() {
+    console.log("✅ Connected to Socket.IO");
+});
+
+socket.on("receive_message", function(data) {
+    console.log("Received:", data);
+
+    const messages = document.getElementById("messages");
+    messages.innerHTML += `<p>${data}</p>`;
+});
+
+function sendMessage() {
+
+    const input = document.getElementById("message");
+
+    if(input.value.trim() === ""){
+        return;
+    }
+
+    console.log("Sending:", input.value);
+
+    socket.emit("send_message", input.value);
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
