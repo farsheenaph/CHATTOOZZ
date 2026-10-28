@@ -1,12 +1,15 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chattoozzz</title>
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/chat.css') }}">
 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js"></script>
 </head>
 
 <body>
@@ -15,52 +18,76 @@
 
     <h1>💬 Chattoozzz</h1>
 
+    <p>Room: {{ room_id }} | User: {{ username }}</p>
+
     <div id="messages"></div>
 
     <div class="input-box">
-
         <input
             type="text"
             id="message"
-            placeholder="Type your message...">
+            placeholder="Type your message..."
+            autocomplete="off">
 
-        <button onclick="sendMessage()">
-            Send
-        </button>
-
+        <button onclick="sendMessage()">Send</button>
     </div>
 
 </div>
 
-<!-- JavaScript starts here -->
 <script>
-const socket = io();
+    const socket = io();
 
-socket.on("connect", function() {
-    console.log("✅ Connected to Socket.IO");
-});
-
-socket.on("receive_message", function(data) {
-    console.log("Received:", data);
+    const roomId = {{ room_id | tojson }};
+    const username = {{ username | tojson }};
 
     const messages = document.getElementById("messages");
-    messages.innerHTML += `<p>${data}</p>`;
-});
-
-function sendMessage() {
-
     const input = document.getElementById("message");
 
-    if(input.value.trim() === ""){
-        return;
+    socket.on("connect", function () {
+        console.log("Connected to Socket.IO");
+
+        socket.emit("join_chat_room", {
+            room_id: roomId,
+            username: username
+        });
+    });
+
+    socket.on("receive_message", function (data) {
+        const messageBox = document.createElement("p");
+        const name = document.createElement("strong");
+
+        name.textContent = data.username + ": ";
+        messageBox.appendChild(name);
+        messageBox.appendChild(
+            document.createTextNode(data.message)
+        );
+
+        messages.appendChild(messageBox);
+        messages.scrollTop = messages.scrollHeight;
+    });
+
+    function sendMessage() {
+        const message = input.value.trim();
+
+        if (message === "") {
+            return;
+        }
+
+        socket.emit("send_message", {
+            room_id: roomId,
+            username: username,
+            message: message
+        });
+
+        input.value = "";
+        input.focus();
     }
 
-    console.log("Sending:", input.value);
-
-    socket.emit("send_message", input.value);
-
-    input.value = "";
-}
+    input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
 </script>
 
 </body>
